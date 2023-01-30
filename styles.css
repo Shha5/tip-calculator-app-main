@@ -10,6 +10,7 @@
     --bg-color: hsl(185, 41%, 84%);
     --input-field-color: hsl(189, 41%, 97%);
     --card-h3-color: hsl(0, 0%, 100%);
+    --alert-color: hsl(15, 58%, 53%);
     --primary-font: "Space Mono";
 }
 
@@ -80,6 +81,16 @@ input[type=number]{
     border-radius: .4rem;
 }
 
+input:focus,
+input:active
+{
+    outline: 2px solid var(--selected-result-reset);
+}
+
+input.invalid
+{
+    outline: 1px solid var(--alert-color);
+}
 
 .bill,
 .people{
@@ -89,8 +100,14 @@ input[type=number]{
     text-align: right;
 }
 
-.bill-alert{
-    
+
+
+#bill-alert,
+#people-alert,
+#tip-alert{
+    text-align: right;
+    font-size: 1rem;
+    color: var(--alert-color);
 }
 
 .bill::placeholder,
@@ -141,15 +158,12 @@ input[type=number]{
     z-index: 90;
     background: var(--input-text-result-bg-color);
     color: var(--card-h3-color);
-    
 }
+
 .tip-choice input[type=radio],
 .tip-choice label{
     display: block;
-
-   
 }
-
 
 .custom{
     text-align: right;

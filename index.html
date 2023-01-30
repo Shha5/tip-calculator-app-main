@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet"/>
-  <script src="/scripts/data-validation.js"></script>
+  <script src="/scripts/data-validation-style.js"></script>
   <script src="/scripts/calculator.js"></script>
   <title>Frontend Mentor | Tip calculator app</title>
 </head>
@@ -18,24 +18,30 @@
 </div>
 <div class="container">
 <div class="calc-form">
-<form id="bill-splitter">
+<form id="bill-splitter" onkeyup="calculate()">
+ <div class="bill-wrapper">
   <h2>Bill</h2> 
     <span id="bill-alert"></span>
-    <input type="number" id="bill" form="bill-splitter" placeholder="0" class="bill" onkeyup="billValidation(), calculate()"/>
+    <input type="number" id="bill" form="bill-splitter" placeholder="0" class="bill" onkeyup="billValidation()"/>
+  </div>
+  <div class="tip-choice-wrapper"> 
   <h2>Select Tip %</h2>
-  <ul class="tip-choice">
-    <li><label id="t5-label" for="t5"><input type="radio" form="bill-splitter" id="t5" name="tip-percentage" value="5" onclick="labelColor(), calculate()">5%</label></li>
-    <li><label id="t10-label" for="t10"><input type="radio" form="bill-splitter" id="t10" name="tip-percentage" value="10" onclick="labelColor(), calculate()">10%</label></li>
-    <li><label id="t15-label" for="t15"><input type="radio" form="bill-splitter" id="t15" name="tip-percentage" value="15" onclick="labelColor(), calculate()">15%</label></li>
-    <li><label id="t25-label" for="t25"><input type="radio" form="bill-splitter" id="t25" name="tip-percentage" value="25" onclick="labelColor(), calculate()">25%</label></li>
-    <li><label id="t50-label" for="t50"><input type="radio" form="bill-splitter" id="t50" name="tip-percentage" value="50" onclick="labelColor(), calculate()">50%</label></li>
-    <input type="text" name="tip-percentage" form="bill-splitter" placeholder="Custom" class="custom" id="t-custom" onkeyup="customTipValidation(), calculate()"/>
+  <ul id="tip-choice" class="tip-choice" onclick="calculate()">
+    <li><label id="t5-label" for="t5"><input type="radio" form="bill-splitter" id="t5" name="tip-percentage" value="5" onclick="labelColor()">5%</label></li>
+    <li><label id="t10-label" for="t10"><input type="radio" form="bill-splitter" id="t10" name="tip-percentage" value="10" onclick="labelColor()">10%</label></li>
+    <li><label id="t15-label" for="t15"><input type="radio" form="bill-splitter" id="t15" name="tip-percentage" value="15" onclick="labelColor()">15%</label></li>
+    <li><label id="t25-label" for="t25"><input type="radio" form="bill-splitter" id="t25" name="tip-percentage" value="25" onclick="labelColor()">25%</label></li>
+    <li><label id="t50-label" for="t50"><input type="radio" form="bill-splitter" id="t50" name="tip-percentage" value="50" onclick="labelColor()">50%</label></li>
+    <input type="text" form="bill-splitter" placeholder="Custom" class="custom" id="t-custom" onkeyup="customTipValidation()"/>
     <span id="tip-alert"></span>
   </ul>
+</div>
+<div class="people-wrapper">
   <h2>Number of People</h2>
     <span id="people-alert"></span>
-    <input type="number" id="people" form="bill-splitter" placeholder="0" class="people" onkeyup="numberOfPeopleValidation(), calculate()"/>
-</div>
+    <input type="number" id="people" form="bill-splitter" placeholder="0" class="people" onkeyup="numberOfPeopleValidation()"/>
+  </div> 
+  </div>
 <div class="calc-result">
   <div class="tip">
       <h3>Tip Amount</h3>
@@ -47,7 +53,7 @@
     <h4>/ person</h4>
   </div>
     <div class="result"><p id="total/person">$0.00</p></div>
-  <button type="reset">Reset</button>
+  <button id="reset" type="reset" onclick="resetForm()">Reset</button>
 </div>
 </form>
 </div>
