@@ -1,65 +1,4 @@
-function labelColor(){
-    var t5 = document.getElementById("t5");
-    var t5Label = document.getElementById("t5-label");
-    var t10 = document.getElementById("t10");
-    var t15 = document.getElementById("t15");
-    var t25 = document.getElementById("t25");
-    var t50 = document.getElementById("t50");
-    var t10Label = document.getElementById("t10-label");
-    var t15Label = document.getElementById("t15-label");
-    var t25Label = document.getElementById("t25-label");
-    var t50Label = document.getElementById("t50-label");
-    var tCustom = document.getElementById("t-custom");
-
-    if(t5.checked==true){
-        check(t5,t5Label);
-        uncheck(t10, t10Label);
-        uncheck(t15, t15Label);
-        uncheck(t25, t25Label);
-        uncheck(t50, t50Label);
-    }
-
-    else if(t10.checked==true){
-        check(t10, t10Label);
-        uncheck(t5, t5Label);
-        uncheck(t15, t15Label);
-        uncheck(t25, t25Label);
-        uncheck(t50, t50Label);
-    }
-
-    else if(t15.checked==true){
-        check(t15, t15Label);
-        uncheck(t5, t5Label);
-        uncheck(t10, t10Label);
-        uncheck(t25, t25Label);
-        uncheck(t50, t50Label);
-    }
-
-    else if(t25.checked==true){
-        check(t25, t25Label);
-        uncheck(t5, t5Label);
-        uncheck(t10, t10Label);
-        uncheck(t15, t15Label);
-        uncheck(t50, t50Label);
-    }
-
-    else if(t50.checked==true){
-        check(t50, t50Label);
-        uncheck(t5, t5Label);
-        uncheck(t10, t10Label);
-        uncheck(t25, t25Label);
-        uncheck(t15, t15Label);
-    }
-
-    tCustom.addEventListener('click', (InputEvent) => {
-        uncheck(t5, t5Label);
-        uncheck(t10, t10Label);
-        uncheck(t25, t25Label);
-        uncheck(t15, t15Label);
-        uncheck(t50, t50Label);
-    });
-}
-
+//Validation functions
 function billValidation(){
 var bill = document.getElementById("bill").value;
 var billInput = document.getElementById("bill");
@@ -115,8 +54,7 @@ function numberOfPeopleValidation(){
         makeInvalid(numberOfPeopleInput);
         peopleAlert.innerHTML = "Invalid number of people.";
     }
-    
-    
+      
 }
 
 function customTipValidation(){
@@ -155,6 +93,31 @@ function makeInvalid(input){
     input.classList.add("invalid");
 }
 
+//Style functions
+function labelColor(){
+    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    var tCustom = document.getElementById("t-custom");
+    var selectedTip = tipPercentage.find(element => element.checked);
+    
+    if(selectedTip!==undefined){
+        let selectedTipLabel = selectedTip.parentElement;
+        check(selectedTip, selectedTipLabel);
+
+        tipPercentage.forEach(function(element) {
+            if(!element.checked){
+                let notSelectedLabel = element.parentElement;
+                uncheck(element, notSelectedLabel);
+            }})
+    }
+
+    tCustom.addEventListener('click', (InputEvent) => {
+        tipPercentage.forEach(function(element){
+            let radioLabel = element.parentElement;
+            uncheck(element, radioLabel);
+        })
+    });
+}
+
 function check(input, inputLabel){
     input.style.backgroundColor = "hsl(172, 67%, 45%)";
     input.style.color = "hsl(183, 100%, 15%)";
@@ -167,4 +130,19 @@ function uncheck(input, inputLabel){
     input.style.color = "hsl(0, 0%, 100%)";
     inputLabel.style.backgroundColor = "hsl(183, 100%, 15%)";
     inputLabel.style.color = "hsl(0, 0%, 100%)";
+}
+
+function resetForm(){
+    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    var tipResult = document.getElementById("tip/person");
+    var totalResult = document.getElementById("total/person");
+
+    tipPercentage.forEach(function(element){
+        let notSelectedLabel = element.parentElement;
+        uncheck(element, notSelectedLabel);
+    })
+
+    tipResult.innerHTML="$0.00";
+    totalResult.innerHTML="$0.00";
+
 }
