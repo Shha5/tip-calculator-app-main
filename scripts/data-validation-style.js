@@ -78,21 +78,6 @@ function customTipValidation(){
     
 }
 
-function isEmpty(input){
-    input.classList.remove("valid");
-    input.classList.remove("invalid");
-}
-
-function makeValid(input){
-    input.classList.remove("invalid");
-    input.classList.add("valid");
-}
-
-function makeInvalid(input){
-    input.classList.remove("valid");
-    input.classList.add("invalid");
-}
-
 //Style functions
 function labelColor(){
     var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
@@ -118,6 +103,55 @@ function labelColor(){
     });
 }
 
+function resetForm(){
+    
+    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    var tipResult = document.getElementById("tip-person");
+    var totalResult = document.getElementById("total-person");
+    var resetBtn = document.getElementById("reset");
+
+    tipPercentage.forEach(function(element){
+        let notSelectedLabel = element.parentElement;
+        uncheck(element, notSelectedLabel);
+    })
+ 
+    
+    tipResult.innerHTML="$0.00";
+    totalResult.innerHTML="$0.00";
+}
+
+function toggleEnabled(){
+    var bill = document.getElementById("bill").value;
+    var tCustom = document.getElementById("t-custom").value;
+    var people = document.getElementById("people").value;
+    var resetBtn = document.getElementById("reset");
+    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+
+    tipPercentageNotSelected = tipPercentage.every(element => !element.checked);
+
+    if( tipPercentageNotSelected==false | bill!=="" | tCustom!=="" | people!=="" ){
+        resetBtn.removeAttribute("disabled");
+    } else {
+        resetBtn.setAttribute("disabled", "");
+    }   
+}
+
+//Functions used by other functions
+function isEmpty(input){
+    input.classList.remove("valid");
+    input.classList.remove("invalid");
+}
+
+function makeValid(input){
+    input.classList.remove("invalid");
+    input.classList.add("valid");
+}
+
+function makeInvalid(input){
+    input.classList.remove("valid");
+    input.classList.add("invalid");
+}
+
 function check(input, inputLabel){
     input.style.backgroundColor = "hsl(172, 67%, 45%)";
     input.style.color = "hsl(183, 100%, 15%)";
@@ -130,19 +164,4 @@ function uncheck(input, inputLabel){
     input.style.color = "hsl(0, 0%, 100%)";
     inputLabel.style.backgroundColor = "hsl(183, 100%, 15%)";
     inputLabel.style.color = "hsl(0, 0%, 100%)";
-}
-
-function resetForm(){
-    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
-    var tipResult = document.getElementById("tip/person");
-    var totalResult = document.getElementById("total/person");
-
-    tipPercentage.forEach(function(element){
-        let notSelectedLabel = element.parentElement;
-        uncheck(element, notSelectedLabel);
-    })
-
-    tipResult.innerHTML="$0.00";
-    totalResult.innerHTML="$0.00";
-
 }
