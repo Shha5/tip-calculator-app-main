@@ -265,6 +265,15 @@ footer {
     margin: 0 0 1rem 0;
 }
 
+footer a{
+    color: var(--input-text-result-bg-color);
+    text-decoration: none;
+}
+
+footer :is(a:hover, a:active, a:focus){
+    color: var(--selected-result-reset);
+}
+
 @media only screen and (orientation:portrait){
     .container{
        width: 100vw;
@@ -382,8 +391,8 @@ footer {
 
     footer{
         margin: 10vh 0 0 0;
-        
     }
+
 }
 
 @media only screen and (orientation:landscape) and (max-height:850px){
