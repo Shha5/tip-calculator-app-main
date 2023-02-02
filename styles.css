@@ -15,7 +15,6 @@
     --primary-font: "Space Mono";
 }
 
-/* LAYOUT, GENERAL STYLING */
 
 body{
     margin: 0;
@@ -111,7 +110,7 @@ p{
 
 .space{
     height: 50%;
-    min-height: 10vw;
+    min-height: 10vmin;
 }
 
 input[type=number]::-webkit-inner-spin-button,
