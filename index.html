@@ -25,11 +25,11 @@
   <div class="tip-choice-wrapper"> 
   <h2>Select Tip %</h2>
   <ul id="tip-choice" class="tip-choice" onclick="calculate(), toggleEnabled()">
-    <li><label id="t5-label" for="t5"><input type="radio" form="bill-splitter" id="t5" name="tip-percentage" value="5" onmouseover="colorOnHover()" onclick="labelColor()">5%</label></li>
-    <li><label id="t10-label" for="t10"><input type="radio" form="bill-splitter" id="t10" name="tip-percentage" value="10" onmouseover="colorOnHover()" onclick="labelColor()">10%</label></li>
-    <li><label id="t15-label" for="t15"><input type="radio" form="bill-splitter" id="t15" name="tip-percentage" value="15" onmouseover="colorOnHover()" onclick="labelColor()">15%</label></li>
-    <li><label id="t25-label" for="t25"><input type="radio" form="bill-splitter" id="t25" name="tip-percentage" value="25" onmouseover="colorOnHover()" onclick="labelColor()">25%</label></li>
-    <li><label id="t50-label" for="t50"><input type="radio" form="bill-splitter" id="t50" name="tip-percentage" value="50" onmouseover="colorOnHover()" onclick="labelColor()">50%</label></li>
+    <li><label id="t5-label" for="t5"><input type="radio" form="bill-splitter" id="t5" name="tip-percentage" value="5" onclick="labelColor()">5%</label></li>
+    <li><label id="t10-label" for="t10"><input type="radio" form="bill-splitter" id="t10" name="tip-percentage" value="10" onclick="labelColor()">10%</label></li>
+    <li><label id="t15-label" for="t15"><input type="radio" form="bill-splitter" id="t15" name="tip-percentage" value="15" onclick="labelColor()">15%</label></li>
+    <li><label id="t25-label" for="t25"><input type="radio" form="bill-splitter" id="t25" name="tip-percentage" value="25" onclick="labelColor()">25%</label></li>
+    <li><label id="t50-label" for="t50"><input type="radio" form="bill-splitter" id="t50" name="tip-percentage" value="50" onclick="labelColor()">50%</label></li>
     <input type="number" form="bill-splitter" placeholder="Custom" class="custom" id="t-custom" onkeyup="customTipValidation()"/>
     <span id="tip-alert"></span>
   </ul>

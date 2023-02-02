@@ -1,15 +1,9 @@
-$(function() {
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    $("html, body").css({"width":w,"height":h});
-});
-
 //Validation functions
 function billValidation(){
-var bill = document.getElementById("bill").value;
-var billInput = document.getElementById("bill");
-var billAlert = document.getElementById("bill-alert");
-var pattern = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
+const bill = document.getElementById("bill").value;
+const billAlert = document.getElementById("bill-alert");
+const billInput = document.getElementById("bill");
+const pattern = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
 
 if(bill.length>0 && bill==0){
     makeInvalid(billInput);
@@ -30,10 +24,10 @@ if(bill.length == 0){
 }
 
 function numberOfPeopleValidation(){
-    var numberOfPeople = document.getElementById("people").value;
-    var numberOfPeopleInput = document.getElementById("people");
-    var peopleAlert = document.getElementById("people-alert");
-    var pattern = /^[1-9]\d*$/;
+    const numberOfPeople = document.getElementById("people").value;
+    const numberOfPeopleInput = document.getElementById("people");
+    const peopleAlert = document.getElementById("people-alert");
+    const pattern = /^[1-9]\d*$/;
    
     
     if(numberOfPeople.length==0){
@@ -64,10 +58,10 @@ function numberOfPeopleValidation(){
 }
 
 function customTipValidation(){
-    var customTip = document.getElementById("t-custom").value;
-    var customTipInput = document.getElementById("t-custom");
-    var tipAlert = document.getElementById("tip-alert");
-    var pattern = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
+    const customTip = document.getElementById("t-custom").value;
+    const customTipInput = document.getElementById("t-custom");
+    const tipAlert = document.getElementById("tip-alert");
+    const pattern = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
 
     if(customTip.includes("-") || customTip.startsWith("-")){
         makeInvalid(customTipInput);
@@ -86,9 +80,9 @@ function customTipValidation(){
 
 //Style functions
 function labelColor(){
-    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
-    var tCustom = document.getElementById("t-custom");
-    var selectedTip = tipPercentage.find(element => element.checked);
+    const tCustom = document.getElementById("t-custom");
+    const tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    const selectedTip = tipPercentage.find(element => element.checked);
     
     if(selectedTip!==undefined){
         let selectedTipLabel = selectedTip.parentElement;
@@ -110,30 +104,33 @@ function labelColor(){
 }
 
 function resetForm(){
-    
-    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
-    var tipResult = document.getElementById("tip-person");
-    var totalResult = document.getElementById("total-person");
-    var resetBtn = document.getElementById("reset");
+
+    const billAlert = document.getElementById("bill-alert");
+    const peopleAlert = document.getElementById("people-alert");
+    const tipAlert = document.getElementById("tip-alert");
+    const tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    const tipResult = document.getElementById("tip-person");
+    const totalResult = document.getElementById("total-person");
 
     tipPercentage.forEach(function(element){
         let notSelectedLabel = element.parentElement;
         uncheck(element, notSelectedLabel);
     })
  
-    
     tipResult.innerHTML="$0.00";
     totalResult.innerHTML="$0.00";
+    billAlert.innerHTML = "";
+    peopleAlert.innerHTML = "";
+    tipAlert.innerHTML = "";
 }
 
 function toggleEnabled(){
-    var bill = document.getElementById("bill").value;
-    var tCustom = document.getElementById("t-custom").value;
-    var people = document.getElementById("people").value;
-    var resetBtn = document.getElementById("reset");
-    var tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
-
-    tipPercentageNotSelected = tipPercentage.every(element => !element.checked);
+    const bill = document.getElementById("bill").value;
+    const people = document.getElementById("people").value;
+    const resetBtn = document.getElementById("reset");
+    const tCustom = document.getElementById("t-custom").value;
+    const tipPercentage = Array.from(document.getElementsByName("tip-percentage"));
+    let tipPercentageNotSelected = tipPercentage.every(element => !element.checked);
 
     if( tipPercentageNotSelected==false | bill!=="" | tCustom!=="" | people!=="" ){
         resetBtn.removeAttribute("disabled");

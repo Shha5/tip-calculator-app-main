@@ -1,15 +1,22 @@
  function calculate(){
-    var bill = document.getElementById("bill").value;
-    var t = Array.from(document.getElementsByName("tip-percentage"));
-    var tCustom = document.getElementById("t-custom");
-    var people = document.getElementById("people").value;
-    var tipResult = document.getElementById("tip-person");
-    var totalResult = document.getElementById("total-person");
-    var tip;
-    var tipAmount;
-    var total;
+    const billAlert = document.getElementById("bill-alert");
+    const peopleAlert = document.getElementById("people-alert");
+    const t = Array.from(document.getElementsByName("tip-percentage"));
+    const tipAlert = document.getElementById("tip-alert");
+    const tCustom = document.getElementById("t-custom");
+    const tipResult = document.getElementById("tip-person");
+    const totalResult = document.getElementById("total-person");
+    let bill = document.getElementById("bill").value;
+    let people = document.getElementById("people").value;
+    let tip;
+    let tipAmount;
+    let total;
     
-    if(people==0)
+    if(billAlert.innerHTML!=="" | peopleAlert.innerHTML!=="" | tipAlert.innerHTML!==""){
+        tipAmount = "0.00";
+        total = "0.00"
+    }
+    else if(people==0)
     {
         tipAmount = "0.00";
         total = "0.00";
