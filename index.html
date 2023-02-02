@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,6 +10,7 @@
   <title>Frontend Mentor | Tip calculator app</title>
 </head>
 <body>
+  <main>
 <div class="logo">
 <img src="images/logo.svg" alt="SPLITTER"/>
 </div>
@@ -30,9 +30,9 @@
     <li><label id="t15-label" for="t15"><input type="radio" form="bill-splitter" id="t15" name="tip-percentage" value="15" onclick="labelColor()">15%</label></li>
     <li><label id="t25-label" for="t25"><input type="radio" form="bill-splitter" id="t25" name="tip-percentage" value="25" onclick="labelColor()">25%</label></li>
     <li><label id="t50-label" for="t50"><input type="radio" form="bill-splitter" id="t50" name="tip-percentage" value="50" onclick="labelColor()">50%</label></li>
-    <input type="number" form="bill-splitter" placeholder="Custom" class="custom" id="t-custom" onkeyup="customTipValidation()"/>
-    <span id="tip-alert"></span>
+    <li><input type="number" form="bill-splitter" placeholder="Custom" class="custom" id="t-custom" onkeyup="customTipValidation()"/></li>
   </ul>
+  <span id="tip-alert"></span>
 </div>
 <div class="people-wrapper">
   <h2>Number of People</h2>
@@ -56,6 +56,7 @@
 </div>
 </form>
 </div>
+</main>
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://www.frontendmentor.io/profile/Shha5">Shha5</a>.
@@ -63,4 +64,3 @@
 <script src="/scripts/data-validation-style.js"></script>
 <script src="/scripts/calculator.js"></script>
 </body>
-</html>
